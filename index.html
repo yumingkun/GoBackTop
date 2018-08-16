@@ -27,7 +27,7 @@
         window.onload=function () {
             let obtn=document.getElementById('btn');
             let timer=null;
-            // 获取可视区的高度
+            // 获取可视区的高度：当前屏幕的高度
             let clientHeight=document.documentElement.clientHeight;
 
 
@@ -45,7 +45,8 @@
                     }
                 },10);
 
-            }
+            };
+
             // 按钮的显示或隐藏
             window.onscroll=function () {
                 // 获取滚动条到顶部的距离
