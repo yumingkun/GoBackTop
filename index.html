@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Javascript 返回顶部</title>
+
+    <style type="text/css">
+        #btn{
+            width: 40px;
+            height: 40px;
+            position: fixed;
+            right: 65px;
+            bottom: 30px;
+            background: url("./images/top_bg.png") no-repeat left top;
+            /*默认影藏*/
+
+        }
+        /*背景图片移动位置*/
+        #btn:hover{
+            background: url("./images/top_bg.png") no-repeat left -40px;
+        }
+
+    </style>
+    
+    <script type="text/javascript">
+        //  页面加载完成后触发
+        window.onload=function () {
+            let obtn=document.getElementById('btn');
+            let timer=null;
+            // 获取可视区的高度
+            let clientHeight=document.documentElement.clientHeight;
+
+
+            // 点击返回顶部
+            obtn.onclick=function () {
+                // 设置定时器，使点击回到顶部的速度变慢
+                timer=setInterval(function () {
+                    // 获取滚动条到顶部的距离
+                    let top=document.documentElement.scrollTop;
+                    document.documentElement.scrollTop -= 50;
+                    console.log(top);
+                    // 清除定时器
+                    if (top === 0){
+                        clearInterval(timer);
+                    }
+                },10);
+
+            }
+            // 按钮的显示或隐藏
+            window.onscroll=function () {
+                // 获取滚动条到顶部的距离
+                let top=document.documentElement.scrollTop;
+                if (top>=clientHeight){
+                    obtn.style.display='block';
+                }
+                else {
+                    obtn.style.display='none';
+                }
+            }
+
+        }
+
+
+    </script>
+
+</head>
+<body style="height: 6600px;background-color: antiquewhite">
+
+<h1>我是顶部</h1>
+
+<a href="javascript:;" title="返回顶部"  id="btn"></a>
+
+
+
+</body>
+</html>
